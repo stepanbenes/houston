@@ -27,6 +27,8 @@ namespace Houston
             app.UseStaticFiles();
             app.UseWebSockets();
 
+            app.UseRouting();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapGet("/", async context =>
