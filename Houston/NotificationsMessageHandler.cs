@@ -12,8 +12,8 @@ namespace Houston
         public NotificationsMessageHandler(WebSocketConnectionManager webSocketConnectionManager)
             : base(webSocketConnectionManager, new StringMethodInvocationStrategy())
         {
-            ((StringMethodInvocationStrategy)MethodInvocationStrategy).On("test", args => {
-				Console.WriteLine(args);
+            ((StringMethodInvocationStrategy)MethodInvocationStrategy).On("test", async args => {
+                await SendMessageToAllAsync(new Message { MessageType = MessageType.MethodReturnValue, Data = "huhuhu" });
             });
         }
     }
