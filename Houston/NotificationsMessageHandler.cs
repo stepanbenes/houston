@@ -13,6 +13,7 @@ namespace Houston
             : base(webSocketConnectionManager, new StringMethodInvocationStrategy())
         {
             ((StringMethodInvocationStrategy)MethodInvocationStrategy).On("test", async args => {
+				Console.WriteLine("huhuhuhu");
                 await SendMessageToAllAsync(new Message { MessageType = MessageType.MethodReturnValue, Data = "huhuhu" });
             });
         }
