@@ -239,6 +239,8 @@ namespace WebSocketManager
 
         public async Task ReceiveAsync(WebSocket socket, WebSocketReceiveResult result, Message receivedMessage)
         {
+            System.Diagnostics.Debug.WriteLine(receivedMessage.Data);
+
             // method invocation request.
             if (receivedMessage.MessageType == MessageType.MethodInvocation)
             {

@@ -37,7 +37,7 @@ namespace Houston
                 });
             });
 
-            app.MapWebSocketManager("/notifications", serviceProvider.GetService<NotificationsMessageHandler>());
+            app.MapWebSocketManager("/chat", serviceProvider.GetService<ChatHandler>());
         }
     }
 }
