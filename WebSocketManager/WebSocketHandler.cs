@@ -251,7 +251,11 @@ namespace WebSocketManager
                     invocationDescriptor = JsonConvert.DeserializeObject<InvocationDescriptor>(receivedMessage.Data, _jsonSerializerSettings);
                     if (invocationDescriptor == null) return;
                 }
-                catch { return; } // ignore invalid data sent to the server.
+                catch (Exception ex)
+                {
+                    // ignore invalid data sent to the server?
+                    throw ex;
+                } 
 
                 // if the unique identifier hasn't been set then the client doesn't want a return value.
                 if (invocationDescriptor.Identifier == Guid.Empty)

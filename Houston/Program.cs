@@ -21,7 +21,7 @@ namespace Houston
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                    webBuilder.UseUrls("http://localhost:5003", "https://localhost:5004");
+                    webBuilder.UseUrls("http://192.168.1.42:5003", "https://192.168.1.42:5004");
                 });
     }
 }

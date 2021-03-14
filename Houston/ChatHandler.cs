@@ -45,7 +45,7 @@ namespace Houston
         }
 
         // this method can be called from a client, returns the integer result or throws an exception.
-        public int DoMath(WebSocket socket, int a, int b)
+        public long DoMath(WebSocket socket, long a, long b)
         {
             if (a == 0 || b == 0) throw new Exception("That makes no sense.");
             return a + b;
@@ -57,7 +57,7 @@ namespace Houston
             string id = WebSocketConnectionManager.GetId(socket);
             try
             {
-                int result = await InvokeClientMethodAsync<int, int, int>(id, "DoMath", 3, 5);
+                long result = await InvokeClientMethodAsync<long, long, long>(id, "DoMath", 3, 5);
                 await InvokeClientMethodOnlyAsync(id, "receiveMessage", "Server", $"You sent me this result: " + result);
             }
             catch (Exception ex)
