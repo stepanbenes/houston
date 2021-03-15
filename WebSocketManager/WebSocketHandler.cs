@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using WebSocketManager.Common;
 using System.Collections.Generic;
+using Newtonsoft.Json.Converters;
 
 namespace WebSocketManager
 {
@@ -18,9 +19,10 @@ namespace WebSocketManager
         private JsonSerializerSettings _jsonSerializerSettings = new JsonSerializerSettings()
         {
             ContractResolver = new CamelCasePropertyNamesContractResolver(),
-            TypeNameHandling = TypeNameHandling.All,
-            TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Simple,
-            SerializationBinder = new JsonBinderWithoutAssembly()
+            Converters = { new StringEnumConverter(new DefaultNamingStrategy()) }
+            //TypeNameHandling = TypeNameHandling.All,
+            //TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Simple,
+            //SerializationBinder = new JsonBinderWithoutAssembly()
         };
 
         /// <summary>
