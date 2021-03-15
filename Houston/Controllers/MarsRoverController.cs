@@ -20,7 +20,7 @@ namespace Houston.Controllers
         public async Task<IActionResult> MeasureDistanceToObstacle()
         {
             string socketId = MarsRoverHandler.GetConnectedRovers().Single(); // TODO: handle no connected rover; handle multiple connected rovers
-            int distanceInCm = await MarsRoverHandler.InvokeClientMethodAsync<int>(socketId, "measure_distance", arguments: Array.Empty<object>());
+            string distanceInCm = await MarsRoverHandler.InvokeClientMethodAsync<string>(socketId, "measure_distance", arguments: Array.Empty<object>());
             return Ok(distanceInCm);
         }
     }
